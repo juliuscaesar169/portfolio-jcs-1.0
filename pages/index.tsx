@@ -1,3 +1,4 @@
+import Header from '@/components/Header';
 import type { NextPage } from 'next';
 import Head from 'next/head'
 // import { Inter } from '@next/font/google'
@@ -9,7 +10,22 @@ const Home: NextPage = () => {
       <Head>
         <title>Julius Caesar's Portfolio</title>
       </Head>
-      <h1 className='text-3xl font-bold underline'>Work In Progress 2</h1>
+      
+      {/* Header */}
+      <Header />
+
+      {/* Hero */}
+
+      {/* About */}
+
+      {/* Experience */}
+
+      {/* Skills */}
+
+      {/* Projects */}
+
+      {/* Contact Me */}
+
     </div>
   )
 }
