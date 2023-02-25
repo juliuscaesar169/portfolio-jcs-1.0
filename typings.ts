@@ -39,7 +39,7 @@ export interface Skill extends SanityBody {
     title: string;
 }
 
-export interface Expetience extends SanityBody {
+export interface Experience extends SanityBody {
     _type: 'experience',
     company: string,
     companyImage: Image;
