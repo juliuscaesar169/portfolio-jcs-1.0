@@ -25,6 +25,12 @@ const Header = ({}: Props) => {
         
         {/* Social Media */}
         {/* <button onClick={}></button> */}
+        {/* <SocialIcon
+          url="https://github.com/juliuscaesar169"
+          fgColor="gray"
+          bgColor="transparent"
+          target={"_blank"}
+        /> */}
         <SocialIcon
           url="https://linkedin.com/in/jcsanchez169/"
           fgColor="gray"
@@ -32,13 +38,7 @@ const Header = ({}: Props) => {
           target={"_blank"}
         />
         <SocialIcon
-          url="https://linkedin.com/in/jcsanchez169/"
-          fgColor="gray"
-          bgColor="transparent"
-          target={"_blank"}
-        />
-        <SocialIcon
-          url="https://linkedin.com/in/jcsanchez169/"
+          url="https://github.com/juliuscaesar169"
           fgColor="gray"
           bgColor="transparent"
           target={"_blank"}
