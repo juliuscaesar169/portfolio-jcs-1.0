@@ -1,14 +1,20 @@
+import { urlFor } from "@/sanity";
+import { PageInfo } from "@/typings";
 import Link from "next/link";
 import React from "react";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-const Hero = ({}: Props) => {
+const Hero = ({ pageInfo }: Props) => {
+  const backupHeroImage = 'https://avatars.githubusercontent.com/u/87092772'
+
   const [text, count] = useTypewriter({
     words: [
-      "Hey there! It's Julio Cesar",
+      `Hey! It's ${pageInfo?.name?.replace(/\s+\S*$/,'') || 'Julio Cesar'}`,
       "Or in English, Julius Caesar :)",
       "<FullStackDeveloper />",
     ],
@@ -20,12 +26,12 @@ const Hero = ({}: Props) => {
     <div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden">
         <BackgroundCircles />
         <img 
-            src={"https://avatars.githubusercontent.com/u/87092772"} 
+            src={urlFor(pageInfo.heroImage)?.url() || backupHeroImage} 
             alt={"Hero Picture"} 
             className={"relative rounded-full h-32 w-32 mx-auto object-cover"}/>
       <div className="z-20">
         <h2 className="text-sm uppercase text-gray-500 pb-2 tracking-[15px]">
-            Software Engineer
+            {pageInfo?.role}
         </h2>
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">
             <span>{text}</span>
