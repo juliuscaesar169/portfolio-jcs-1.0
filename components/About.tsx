@@ -1,9 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { PageInfo } from "@/typings";
+import { urlFor } from "@/sanity";
 
-type Props = {};
+type Props = {
+  pageInfo: PageInfo;
+};
 
-const About = ({}: Props) => {
+const About = ({ pageInfo }: Props) => {
+  const backupProfilePic = 'https://avatars.githubusercontent.com/u/87092772'
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -30,7 +36,7 @@ const About = ({}: Props) => {
         viewport={{
           once: true,
         }}
-        src="https://avatars.githubusercontent.com/u/87092772"
+        src={urlFor(pageInfo?.profilePic)?.url() || backupProfilePic}
         className="-mb-20 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-95 xl:w-[500px] xl:h-[600px]"
       />
 
@@ -41,12 +47,7 @@ const About = ({}: Props) => {
           background
         </h4>
         <p className="text-base">
-          Argentine living in Berlin. I landed in the programming world time
-          ago, and in 2021 took the final leap by doing a Coding Bootcamp. Now,
-          I'm currently working as a software engineer for an exciting "unicorn"
-          with a dazzling team. My background in the aviation industry provided
-          me with complementary skills. I'm a challenge hunter, the discomfort
-          zone became my comfort zone.
+          {pageInfo?.backgroundInformation}
         </p>
       </div>
     </motion.div>
