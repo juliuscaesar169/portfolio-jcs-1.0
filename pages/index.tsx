@@ -24,7 +24,6 @@ type Props = {
 }
 
 const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
-  console.log(pageInfo)
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbarPage">
       <Head>
@@ -57,7 +56,7 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
         <ContactMe pageInfo={pageInfo}/>
       </section>
 
-      <Footer />
+      <Footer pageInfo={pageInfo} />
 
     </div>
   )
