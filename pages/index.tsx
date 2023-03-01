@@ -8,7 +8,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
-import { IExperience, PageInfo, Project, Skill, Social } from '@/typings';
+import { Experience as IExperience, PageInfo, Project, Skill, Social } from '@/typings';
 import { fetchPageInfo } from '@/utils/fetchPageInfo';
 import { fetchExperiences } from '@/utils/fetchExperiences';
 import { fetchSkills } from '@/utils/fetchSkills';
