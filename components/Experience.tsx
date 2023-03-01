@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import ExperienceCard from "./ExperienceCard";
-import { IExperience } from "@/typings";
+import { Experience } from "@/typings";
 
 type Props = {
-  experiences: IExperience[];
+  experiences: Experience[];
 };
 
 const Experience = ({ experiences }: Props) => {
