@@ -24,6 +24,7 @@ type Props = {
 }
 
 const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
+  console.log(pageInfo)
   return (
     <div className="bg-[rgb(36,36,36)] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbarPage">
       <Head>
@@ -53,7 +54,7 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
       </section>
 
       <section id="contact" className="snap-start">
-        <ContactMe />
+        <ContactMe pageInfo={pageInfo}/>
       </section>
 
       <Footer />
@@ -77,7 +78,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       experiences,
       skills,
       projects,
-      socials
+      socials,
     }
   }
 }
