@@ -18,10 +18,19 @@ export default {
       },
     },
     {
+      name: 'finishedAt',
+      title: 'Finished At',
+      type: 'date',
+    },
+    {
+      name: 'isDeployed',
+      title: 'Is Deployed',
+      type: 'boolean',
+    },
+    {
       name: 'summary',
       title: 'Summary',
       type: 'text',
-
     },
     {
       name: 'technologies',
