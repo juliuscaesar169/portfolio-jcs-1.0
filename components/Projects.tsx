@@ -21,19 +21,21 @@ const Projects = ({ projects }: Props) => {
         </h3>
 
         <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbarPage">
-            {projects?.map((project, i) => (
+            {projects?.map((project, i) => project?._id && (
                 <div key={project._id} className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
-                    <motion.img 
-                          initial={{
-                            y: -300,
-                            opacity: 0,
-                          }}
-                          transition={{ duration: 1.2 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{once: true}}
-                        src={urlFor(project.image)?.url()}
-                        alt="Project Image"
-                    />
+                    {project?.image && (
+                        <motion.img 
+                              initial={{
+                                y: -300,
+                                opacity: 0,
+                              }}
+                              transition={{ duration: 1.2 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{once: true}}
+                            src={urlFor(project.image)?.url()}
+                            alt="Project Image"
+                        />
+                    )}
                     <div className="space-y-10 px-0 md:px-10 max-w-6xl">
                         <h4 className="text-4xl font-semibold text-center">
                             <span className="underline decoration-[#F7AB0A]/50">
@@ -42,9 +44,8 @@ const Projects = ({ projects }: Props) => {
                             {project.title}
                         </h4>
 
-                          {/* project's techs to show */}
-                          {/* <div className="flex items-center space-x-2 justify-center">
-                            {project.technologies?.map(technology => (
+                          <div className="flex items-center space-x-2 justify-center">
+                            {project.technologies?.map(technology => technology?._id && (
                                 <img 
                                     key={technology._id}
                                     className="h-10 w-10"
@@ -52,8 +53,8 @@ const Projects = ({ projects }: Props) => {
                                     alt="Technology Logo"
                                 />
                             ))}
-                          </div> */}
-
+                          </div>
+                            
                         <p className="text-lg text-center md:text-left">
                             {project.summary}
                         </p>
