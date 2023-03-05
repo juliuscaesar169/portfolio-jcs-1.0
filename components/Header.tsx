@@ -37,7 +37,6 @@ const Header = ({ socials }: Props) => {
           />
         ))}
       </motion.div>
-      <Link href={"#contact"}>
         <motion.div
           className="flex flex-row items-center text-gray-300 cursor-pointer"
           initial={{
@@ -61,11 +60,12 @@ const Header = ({ socials }: Props) => {
             bgColor="transparent"
             target={"_blank"}
           />
-          <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
-            Get In Touch
-          </p>
+          <Link href={"#contact"}>
+            <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
+              Get In Touch
+            </p>
+          </Link>
         </motion.div>
-      </Link>
     </header>
   );
 };
