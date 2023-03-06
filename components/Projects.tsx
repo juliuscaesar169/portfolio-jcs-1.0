@@ -8,7 +8,6 @@ type Props = {
 };
 
 const Projects = ({ projects }: Props) => {
-
   return (
     <motion.div 
         initial={{ opacity: 0 }}
@@ -33,6 +32,7 @@ const Projects = ({ projects }: Props) => {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{once: true}}
                             src={urlFor(project.image)?.url()}
+                            className="max-h-96 max-w-xl"
                             alt="Project Image"
                         />
                     )}
