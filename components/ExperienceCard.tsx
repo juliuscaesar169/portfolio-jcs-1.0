@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Experience } from "@/typings";
 import { urlFor } from "@/sanity";
@@ -8,6 +8,20 @@ type Props = {
 };
 
 const ExperienceCard = ({ experience }: Props) => {
+  const [startingDate, setStartingDate] = useState('')
+  const [endingDate, setEndingDate] = useState('')
+
+  /**
+   * format dates (MMM YYYY)
+   */
+  useEffect(() => {
+    const dateStarted = new Date(experience?.dateStarted)?.toLocaleString('en-us',{month:'short', year:'numeric'})
+    const dateEnded = new Date(experience?.dateEnded)?.toLocaleString('en-us',{month:'short', year:'numeric'})
+
+    setStartingDate(dateStarted)
+    setEndingDate(dateEnded)
+  },[])
+
   return (
     <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200">
       <motion.img
@@ -34,10 +48,10 @@ const ExperienceCard = ({ experience }: Props) => {
           ))}
         </div>
         <p className="uppercase py-5 text-gray-300">
-          {new Date(experience?.dateStarted)?.toDateString()} -{" "}
+          {startingDate} —{" "}
           {experience?.isCurrentlyWorkingHere
           ? "Present" 
-          : new Date(experience?.dateEnded)?.toDateString()}
+          : endingDate}
         </p>
 
         <ul className="list-disc space-y-4 ml5 text-lg">
