@@ -10,16 +10,48 @@ type Props = {
 const ExperienceCard = ({ experience }: Props) => {
   const [startingDate, setStartingDate] = useState('')
   const [endingDate, setEndingDate] = useState('')
+  const [workedTime, setWorkedTime] = useState('')
 
   /**
    * format dates (MMM YYYY)
+   * get worked time
    */
   useEffect(() => {
-    const dateStarted = new Date(experience?.dateStarted)?.toLocaleString('en-us',{month:'short', year:'numeric'})
-    const dateEnded = new Date(experience?.dateEnded)?.toLocaleString('en-us',{month:'short', year:'numeric'})
+    const dateStarted = new Date(experience?.dateStarted)
+    const dateEnded = new Date(experience?.dateEnded)
+    const referenceDate = dateEnded && !isNaN(dateEnded.getMonth()) ? dateEnded : new Date()
 
-    setStartingDate(dateStarted)
-    setEndingDate(dateEnded)
+    const monthDiff = referenceDate?.getMonth() - dateStarted?.getMonth() + (12 * (referenceDate?.getFullYear() - dateStarted?.getFullYear())) + 1 || 0
+    const yearDiff = Math.floor(monthDiff / 12) || 0
+
+    let periodWorked = ''
+    //set years
+    switch (true) {
+      case yearDiff > 1:
+        periodWorked += `${yearDiff} yrs `;
+        break
+      case yearDiff === 1:
+        periodWorked += `${yearDiff} yr `;
+        break
+      default:
+        break;
+    }
+
+    // set months
+    switch (true) {
+      case monthDiff % 12 === 1:
+        periodWorked += `${monthDiff % 12} mo`;
+        break
+      case monthDiff % 12 > 1:
+        periodWorked += `${monthDiff % 12} mos`;
+        break
+      default:
+        break;
+    }
+
+    setStartingDate(dateStarted?.toLocaleString('en-us',{month:'short', year:'numeric'}))
+    setEndingDate(dateEnded?.toLocaleString('en-us',{month:'short', year:'numeric'}))
+    setWorkedTime(periodWorked)
   },[])
 
   return (
@@ -51,7 +83,8 @@ const ExperienceCard = ({ experience }: Props) => {
           {startingDate} —{" "}
           {experience?.isCurrentlyWorkingHere
           ? "Present" 
-          : endingDate}
+          : endingDate} ·{" "}
+          {workedTime}
         </p>
 
         <ul className="list-disc space-y-4 ml5 text-lg">
