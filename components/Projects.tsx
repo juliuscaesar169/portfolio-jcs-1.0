@@ -19,9 +19,9 @@ const Projects = ({ projects }: Props) => {
             Projects
         </h3>
 
-        <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbarPage">
+        <div className="relative w-full py-5 flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbarPage">
             {projects?.map((project, i) => project?._id && (
-                <div key={project._id} className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen">
+                <div key={project._id} className="w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen mx-12">
                     {project?.image && (
                         <motion.img 
                               initial={{
@@ -32,7 +32,7 @@ const Projects = ({ projects }: Props) => {
                               whileInView={{ opacity: 1, y: 0 }}
                               viewport={{once: true}}
                             src={urlFor(project.image)?.url()}
-                            className="max-h-96 max-w-xl"
+                            className="max-h-80 lg:max-h-96 max-w-xl"
                             alt="Project Image"
                         />
                     )}

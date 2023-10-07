@@ -55,7 +55,7 @@ const ExperienceCard = ({ experience }: Props) => {
   },[])
 
   return (
-    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] xl:w-[900px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200">
+    <article className="flex flex-col rounded-lg items-center space-y-7 flex-shrink-0 w-[500px] md:w-[600px] snap-center bg-[#292929] p-10 hover:opacity-100 opacity-40 cursor-pointer transition-opacity duration-200">
       <motion.img
         initial={{ y: -100, opacity: 0 }}
         transition={{ duration: 1.2 }}
@@ -66,7 +66,7 @@ const ExperienceCard = ({ experience }: Props) => {
         alt="Experience Card"
       />
 
-      <div className="px-0 md:px-10">
+      <div className="px-20 md:px-10">
         <h4 className="text-4xl font-ligth">{experience?.jobTitle} | {experience?.companyName}</h4>
         <p className="font-bold text-2xl mt-1">{experience?.location}</p>
         <div className="flex space-x-2 my-2">
